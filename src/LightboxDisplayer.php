@@ -6,6 +6,7 @@ namespace SmallRuralDog\LightBox;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Grid\Displayers\AbstractDisplayer;
+use Illuminate\Support\Arr;
 
 class LightboxDisplayer extends AbstractDisplayer
 {
@@ -38,10 +39,10 @@ SCRIPT;
         if (empty($this->value)) {
             return '';
         }
-        $server = array_get($options, 'server');
-        $width = array_get($options, 'width', 200);
-        $height = array_get($options, 'height', 200);
-        if (array_get($options, 'zooming')) {
+        $server = Arr::get($options, 'server');
+        $width = Arr::get($options, 'width', 200);
+        $height = Arr::get($options, 'height', 200);
+        if (Arr::get($options, 'zooming')) {
             $this->zooming();
         }
         Admin::script($this->script());
